@@ -1,5 +1,3 @@
-// type HeadingProps = { title: string };
-
 const Navbar = () => {
   return (
     <div className="bg-blue-100 p-8 shadow sm flex justify-between ">

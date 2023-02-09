@@ -1,5 +1,5 @@
 const Textbox = () => {
-  return <div className="border-1">This is textbox</div>;
+  return <textarea className="max-h-56 w-6/12 outline-none p-10"></textarea>;
 };
 
 export default Textbox;

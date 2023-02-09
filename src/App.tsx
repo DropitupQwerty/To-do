@@ -11,16 +11,13 @@ function App() {
     { id: 2, text: "Im goona kick this ass", isDone: false },
     { id: 3, text: "Saple todo list 3", isDone: true },
     { id: 4, text: "Im goona kick this asasdasdasdasdddasdass", isDone: false },
-    // { id: 4, text: "Im goona kick this assds" },
-    // { id: 4, text: "Im goona kick this asasds" },
-    // { id: 4, text: "Im goona kick this asasds" },
-    // { id: 4, text: "Im goona kick this asasdsd asds" },
-    // { id: 4, text: "Im goona kick this ass" },
-    // { id: 4, text: "Im goona kick this assds" },
-    // { id: 4, text: "Im goona kick this aass" },
-    // { id: 4, text: "Im goona kick asdasdthis ass" },
-    // { id: 4, text: "Im goona kick this ass" },
-    // { id: 4, text: "Im goona kick this ass" },
+    { id: 5, text: "pontang ina", isDone: true },
+    { id: 6, text: "Im goona kick this ass", isDone: false },
+    { id: 6, text: "Im goona kick this ass", isDone: false },
+    { id: 6, text: "Im goona kick this ass", isDone: false },
+    { id: 6, text: "Im goona kick this ass", isDone: false },
+    { id: 7, text: "Saple todo list 3", isDone: true },
+    { id: 8, text: "Im goona kick this asasdasdasdasdddasdass", isDone: false },
   ]);
 
   const deleteTodo = (id: number) => {
@@ -28,7 +25,7 @@ function App() {
   };
 
   const doneTodo = (id: number) => {
-    console.log("isDone" + id);
+    console.log(id);
   };
 
   return (
@@ -36,13 +33,9 @@ function App() {
       <div className="sticky top-0 z-10">
         <Navbar />
       </div>
-      <div className="flex justify-between m-3">
-        <div>
-          <Textbox />
-        </div>
-        <div>
-          <TodoList items={todos} onDelete={deleteTodo} onChecked={doneTodo} />
-        </div>
+      <div className="flex m-3 justify-between">
+        <Textbox />
+        <TodoList items={todos} onDelete={deleteTodo} onChecked={doneTodo} />
       </div>
     </div>
   );
