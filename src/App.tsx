@@ -7,20 +7,20 @@ import Textbox from "./components/Textbox";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([
-    { id: 1, text: "pontang ina" },
-    { id: 2, text: "Im goona kick this ass" },
-    { id: 3, text: "Saple todo list 3" },
-    { id: 4, text: "Im goona kick this asasdasdasdasdddasdass" },
-    { id: 4, text: "Im goona kick this assds" },
-    { id: 4, text: "Im goona kick this asasds" },
-    { id: 4, text: "Im goona kick this asasds" },
-    { id: 4, text: "Im goona kick this asasdsd asds" },
-    { id: 4, text: "Im goona kick this ass" },
-    { id: 4, text: "Im goona kick this assds" },
-    { id: 4, text: "Im goona kick this aass" },
-    { id: 4, text: "Im goona kick asdasdthis ass" },
-    { id: 4, text: "Im goona kick this ass" },
-    { id: 4, text: "Im goona kick this ass" },
+    { id: 1, text: "pontang ina", isDone: true },
+    { id: 2, text: "Im goona kick this ass", isDone: false },
+    { id: 3, text: "Saple todo list 3", isDone: true },
+    { id: 4, text: "Im goona kick this asasdasdasdasdddasdass", isDone: false },
+    // { id: 4, text: "Im goona kick this assds" },
+    // { id: 4, text: "Im goona kick this asasds" },
+    // { id: 4, text: "Im goona kick this asasds" },
+    // { id: 4, text: "Im goona kick this asasdsd asds" },
+    // { id: 4, text: "Im goona kick this ass" },
+    // { id: 4, text: "Im goona kick this assds" },
+    // { id: 4, text: "Im goona kick this aass" },
+    // { id: 4, text: "Im goona kick asdasdthis ass" },
+    // { id: 4, text: "Im goona kick this ass" },
+    // { id: 4, text: "Im goona kick this ass" },
   ]);
 
   const deleteTodo = (id: number) => {
