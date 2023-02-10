@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Todo from "./models/Todo";
 import TodoList from "./components/Todolist";
@@ -21,15 +21,11 @@ function App() {
   ]);
   const [value, setValue] = useState<string>("");
 
-  const deleteTodo = (id: number) => {
-    console.log(id);
-  };
-
   const doneTodo = (id: number) => {
     console.log(id);
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     console.log(event.target.value);
     setValue(event.target.value);
   };
@@ -49,7 +45,7 @@ function App() {
           handleChange={handleChange}
           onSubmit={onSubmit}
         />
-        <TodoList items={todos} onDelete={deleteTodo} onChecked={doneTodo} />
+        <TodoList items={todos} onChecked={doneTodo} />
       </div>
     </div>
   );
