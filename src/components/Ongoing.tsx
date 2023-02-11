@@ -13,10 +13,12 @@ const Ongoing = ({ items, onChecked }: OngoingProps) => {
         {items.map((item) => (
           <>
             {item.isDone ? null : (
-              <div className="m-2 max-w-lg shadow bg-red-200  rounded-2xl flex justify-between items-center ">
-                <div className="p-4 w-5/6">{item.text}</div>
-                <div className="m-5 ">
-                  <AiOutlineCheck size={20} />
+              <div className="m-1 max-w-lg shadow bg-red-100 rounded-md flex justify-between items-center hover:bg-red-100 text-base p-3">
+                <div>{item.text}</div>
+                <div>
+                  <button>
+                    <AiOutlineCheck className="text-green-500" />
+                  </button>
                 </div>
               </div>
             )}

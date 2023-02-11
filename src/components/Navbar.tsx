@@ -1,8 +1,9 @@
 const Navbar = () => {
   return (
-    <div className="bg-blue-200 p-8 shadow sm flex justify-between ">
+    <div className="p-8 ">
       <div>
-        <h1 className="font-bold color-plain">To-Do</h1>
+        <h1 className="font-bold text-cyan-400 text-5xl">To-Do</h1>
+        <span>List Something new</span>
       </div>
     </div>
   );

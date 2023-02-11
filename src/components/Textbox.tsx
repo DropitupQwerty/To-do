@@ -1,25 +1,26 @@
+import { AiOutlineArrowRight } from "react-icons/all";
+
 type TextboxProps = {
   value: string;
   handleChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onSubmit: () => void;
 };
 
-const Textbox = ({ value, handleChange, onSubmit }: TextboxProps) => {
+const Textbox = ({ value, handleChange }: TextboxProps) => {
   return (
     <div className="mx-5  mt-4 relative">
       <textarea
-        className="w-full outline-none p-3 resize-none rounded-2xl"
+        className="w-full outline-none p-3 resize-none rounded-md"
         onChange={handleChange}
         value={value}
         rows={3}
         placeholder="Input new task here..."
       />
-      <div className="flex justify-center">
-        <button className="p-2 border transition rounded-xl bg-red-400 hover:bg-cyan-500 ">
-          Add Note
-        </button>
-        <button className="p-2 border transition rounded-xl bg-cyan-400 hover:bg-cyan-500 ">
-          Custom Color
+      <div className="flex justify-end">
+        <button className="p-2 transition rounded-md bg-red-400 hover:bg-red-500 flex items-center text-base ">
+          Add new task
+          <span className="hover:translate-x-2 mx-2 transition ">
+            <AiOutlineArrowRight size={20} />
+          </span>
         </button>
       </div>
     </div>

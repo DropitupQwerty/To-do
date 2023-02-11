@@ -36,16 +36,12 @@ function App() {
 
   return (
     <div className="text-xl">
-      <div className="sticky top-0 z-10">
+      <div>
         <Navbar />
       </div>
       <div>
         <div>
-          <Textbox
-            value={value}
-            handleChange={handleChange}
-            onSubmit={onSubmit}
-          />
+          <Textbox value={value} handleChange={handleChange} />
         </div>
         <div className="flex justify-center">
           <TodoList items={todos} onChecked={doneTodo} />
