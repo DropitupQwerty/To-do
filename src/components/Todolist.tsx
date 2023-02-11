@@ -1,7 +1,7 @@
 import Todo from "../models/Todo";
 import CompletedTask from "./CompletedTask";
 import Ongoing from "./Ongoing";
-import Heading from "./common/heading";
+import Heading from "./common/Heading";
 
 interface TodoListProps {
   items: Todo[];
@@ -10,11 +10,13 @@ interface TodoListProps {
 
 function TodoList({ items, onChecked }: TodoListProps) {
   return (
-    <div className="w-9/12">
-      <div>
+    <div className="w-9/12 flex justify-evenly">
+      <div className="m-4 w-full relative">
+        <Heading value="Ongoing" />
         <Ongoing onChecked={onChecked} items={items} />
       </div>
-      <div className="mt-5">
+      <div className="m-4 w-full">
+        <Heading value="Completed" />
         <CompletedTask items={items} />
       </div>
     </div>

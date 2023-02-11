@@ -1,6 +1,3 @@
-import Button from "./common/Button";
-import Heading from "./common/heading";
-
 type TextboxProps = {
   value: string;
   handleChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -9,16 +6,22 @@ type TextboxProps = {
 
 const Textbox = ({ value, handleChange, onSubmit }: TextboxProps) => {
   return (
-    <div className="m-4 w-full relative">
-      <Heading value="Input To-Do" />
+    <div className="mx-5  mt-4 relative">
       <textarea
-        className="w-full outline-none p-3 "
+        className="w-full outline-none p-3 resize-none rounded-2xl"
         onChange={handleChange}
         value={value}
-        rows={4}
-        cols={2}
-      ></textarea>
-      <h2 className="absolute"></h2>
+        rows={3}
+        placeholder="Input new task here..."
+      />
+      <div className="flex justify-center">
+        <button className="p-2 border transition rounded-xl bg-red-400 hover:bg-cyan-500 ">
+          Add Note
+        </button>
+        <button className="p-2 border transition rounded-xl bg-cyan-400 hover:bg-cyan-500 ">
+          Custom Color
+        </button>
+      </div>
     </div>
   );
 };

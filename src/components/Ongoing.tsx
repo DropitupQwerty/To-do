@@ -1,5 +1,5 @@
 import Todo from "./../models/Todo";
-import Heading from "./common/heading";
+import { AiOutlineCheck } from "react-icons/all";
 
 interface OngoingProps {
   items: Todo[];
@@ -10,15 +10,14 @@ const Ongoing = ({ items, onChecked }: OngoingProps) => {
   return (
     <div>
       <div>
-        <Heading value="On-going" />
-      </div>
-      <div>
         {items.map((item) => (
           <>
             {item.isDone ? null : (
-              <div className="m-2 max-w-lg shadow bg-red-100 rounded-sm p-5 flex justify-between">
-                <div>{item.text}</div>
-                <button onClick={() => onChecked(item.id)}>DONE</button>
+              <div className="m-2 max-w-lg shadow bg-red-200  rounded-2xl flex justify-between items-center ">
+                <div className="p-4 w-5/6">{item.text}</div>
+                <div className="m-5 ">
+                  <AiOutlineCheck size={20} />
+                </div>
               </div>
             )}
           </>

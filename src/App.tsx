@@ -39,13 +39,17 @@ function App() {
       <div className="sticky top-0 z-10">
         <Navbar />
       </div>
-      <div className="flex m-3 justify-between">
-        <Textbox
-          value={value}
-          handleChange={handleChange}
-          onSubmit={onSubmit}
-        />
-        <TodoList items={todos} onChecked={doneTodo} />
+      <div>
+        <div>
+          <Textbox
+            value={value}
+            handleChange={handleChange}
+            onSubmit={onSubmit}
+          />
+        </div>
+        <div className="flex justify-center">
+          <TodoList items={todos} onChecked={doneTodo} />
+        </div>
       </div>
     </div>
   );
