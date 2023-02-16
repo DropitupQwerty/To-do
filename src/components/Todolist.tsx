@@ -11,11 +11,11 @@ interface TodoListProps {
 function TodoList({ items, onChecked }: TodoListProps) {
   return (
     <div className="w-9/12 flex justify-evenly">
-      <div className="m-4 w-full relative">
-        <Heading value="Ongoing" />
+      <div className="w-full relative">
+        <Heading value="To-do" />
         <Ongoing onChecked={onChecked} items={items} />
       </div>
-      <div className="m-4 w-full">
+      <div className="w-full">
         <Heading value="Completed" />
         <CompletedTask items={items} />
       </div>

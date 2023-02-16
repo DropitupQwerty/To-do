@@ -4,34 +4,35 @@ import Todo from "./models/Todo";
 import TodoList from "./components/Todolist";
 import Navbar from "./components/Navbar";
 import Textbox from "./components/Textbox";
+import { useQuery } from "@tanstack/react-query";
+import { addTodo, fetchTodos } from "./services/todoService";
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: 1, text: "list number 1 ", isDone: true },
-    { id: 2, text: "Im goona kick this ass", isDone: false },
-    { id: 3, text: "Saple todo list 3", isDone: true },
-    { id: 4, text: "Im goona kick this asasdasdasdasdddasdass", isDone: false },
-    { id: 5, text: "pontang ina", isDone: true },
-    { id: 6, text: "Im goona kick this ass", isDone: false },
-    { id: 6, text: "Im goona kick this ass", isDone: false },
-    { id: 6, text: "Im goona kick this ass", isDone: false },
-    { id: 6, text: "Im goona kick this ass", isDone: false },
-    { id: 7, text: "Saple todo list 3", isDone: true },
-    { id: 8, text: "Im goona kick this asasdasdasdasdddasdass", isDone: false },
-  ]);
-  const [value, setValue] = useState<string>("");
+  const initialValues = {
+    id: null,
+    text: "",
+    done: false,
+  };
+
+  const [values, setValues] = useState<Todo>(initialValues);
+  const { data: todos, isSuccess } = useQuery({
+    queryKey: ["todos"],
+    queryFn: fetchTodos,
+  });
+
+  // console.log(todos);
 
   const doneTodo = (id: number) => {
     console.log(id);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log(event.target.value);
-    setValue(event.target.value);
+    setValues({ ...values, text: event.target.value });
   };
 
   const onSubmit = () => {
-    console.log("Submitted");
+    addTodo(values);
+    console.log(values);
   };
 
   return (
@@ -41,7 +42,11 @@ function App() {
       </div>
       <div>
         <div>
-          <Textbox value={value} handleChange={handleChange} />
+          <Textbox
+            values={values.text}
+            handleChange={handleChange}
+            handleSubmit={onSubmit}
+          />
         </div>
         <div className="flex justify-center">
           <TodoList items={todos} onChecked={doneTodo} />
