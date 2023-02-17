@@ -13,7 +13,7 @@ function TodoList({ items, onChecked }: TodoListProps) {
     <div className="w-9/12 flex justify-evenly max-sm:flex-col">
       <div className="w-full">
         <Heading value="To-do" />
-        <Ongoing onChecked={onChecked} items={items} />
+        <Ongoing items={items} />
       </div>
       <div className="w-full">
         <Heading value="Completed" />

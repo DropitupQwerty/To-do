@@ -8,7 +8,7 @@ type CompletedTaskProps = {
 const CompletedTask = ({ items }: CompletedTaskProps) => {
   return (
     <div>
-      {items?.map((item) => (
+      {items?.map((item, index) => (
         <div key={item.id}>
           {item.done && (
             <Card item={item} style="hover:bg-yellow-100 bg-yellow-200">

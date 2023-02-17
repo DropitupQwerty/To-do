@@ -1,12 +1,16 @@
 import { BsTrash } from "react-icons/bs";
+import { useContext } from "react";
+import { TodoContext } from "./../../context/TodoProvider";
 
 type DeleteButtonProps = {
-  id: number | null;
+  id: number;
 };
 
 function DeleteButton({ id }: DeleteButtonProps) {
+  const todoContext = useContext(TodoContext);
+
   const onDelete = () => {
-    console.log("Clicked" + id);
+    todoContext?.deleteTodo(id);
   };
 
   return (

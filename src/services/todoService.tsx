@@ -9,11 +9,16 @@ export const fetchTodos = async () => {
   return todos;
 };
 
-export const postTodo = async (todo: Todo) => {
+export const addTodoCall = async (todo: Todo) => {
   await axios
     .post<any>(apiEndPoint + "/addTodo", {
       text: todo.text,
       done: false,
     })
     .then((res) => console.log(res.data));
+};
+
+export const deleteTodoCall = async (id: number) => {
+  console.log("deletetodocall" + `${apiEndPoint}/${id}`);
+  await axios.delete(apiEndPoint + `/${id}`);
 };

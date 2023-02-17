@@ -3,24 +3,27 @@ import Todo from "./models/Todo";
 import TodoList from "./components/Todolist";
 import Navbar from "./components/Navbar";
 import Textbox from "./components/Textbox";
-import { useQuery } from "@tanstack/react-query";
+import { isError, useQuery } from "@tanstack/react-query";
 import { fetchTodos } from "./services/todoService";
 import { TodoContext } from "./context/TodoProvider";
 
 function App() {
   const initialValues = {
-    id: null,
+    id: 0,
     text: "",
     done: false,
   };
-
+  const todoContext = useContext(TodoContext);
   const [values, setValues] = useState<Todo>(initialValues);
+
   const { data: todos } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchTodos,
   });
 
-  const todoContext = useContext(TodoContext);
+  useEffect(() => {
+    todoContext.setTodo(todos);
+  }, [todos]);
 
   const doneTodo = (id: number) => {
     console.log(id);
@@ -48,7 +51,7 @@ function App() {
           />
         </div>
         <div className="flex justify-center">
-          <TodoList items={todos} onChecked={doneTodo} />
+          <TodoList items={todoContext?.todo} onChecked={doneTodo} />
         </div>
       </div>
     </div>
