@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { TodoContext } from "./../context/TodoProvider";
+
 const Navbar = () => {
   return (
     <div className="p-8 ">

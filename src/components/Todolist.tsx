@@ -10,8 +10,8 @@ interface TodoListProps {
 
 function TodoList({ items, onChecked }: TodoListProps) {
   return (
-    <div className="w-9/12 flex justify-evenly">
-      <div className="w-full relative">
+    <div className="w-9/12 flex justify-evenly max-sm:flex-col">
+      <div className="w-full">
         <Heading value="To-do" />
         <Ongoing onChecked={onChecked} items={items} />
       </div>

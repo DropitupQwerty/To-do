@@ -1,11 +1,11 @@
-import { useState } from "react";
-import "./App.css";
+import { useState, useContext, useEffect } from "react";
 import Todo from "./models/Todo";
 import TodoList from "./components/Todolist";
 import Navbar from "./components/Navbar";
 import Textbox from "./components/Textbox";
 import { useQuery } from "@tanstack/react-query";
-import { addTodo, fetchTodos } from "./services/todoService";
+import { fetchTodos } from "./services/todoService";
+import { TodoContext } from "./context/TodoProvider";
 
 function App() {
   const initialValues = {
@@ -15,12 +15,12 @@ function App() {
   };
 
   const [values, setValues] = useState<Todo>(initialValues);
-  const { data: todos, isSuccess } = useQuery({
+  const { data: todos } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchTodos,
   });
 
-  // console.log(todos);
+  const todoContext = useContext(TodoContext);
 
   const doneTodo = (id: number) => {
     console.log(id);
@@ -31,8 +31,7 @@ function App() {
   };
 
   const onSubmit = () => {
-    addTodo(values);
-    console.log(values);
+    todoContext?.addTodo(values);
   };
 
   return (
