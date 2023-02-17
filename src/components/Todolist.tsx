@@ -1,7 +1,7 @@
 import Todo from "../models/Todo";
 import CompletedTask from "./CompletedTask";
 import Ongoing from "./Ongoing";
-import Heading from "./common/Heading";
+import { Heading } from "./common/Heading";
 
 interface TodoListProps {
   items: Todo[];
