@@ -8,13 +8,8 @@ import { fetchTodos } from "./services/todoService";
 import { TodoContext } from "./context/TodoProvider";
 
 function App() {
-  const initialValues = {
-    id: 0,
-    text: "",
-    done: false,
-  };
   const todoContext = useContext(TodoContext);
-  const [values, setValues] = useState<Todo>(initialValues);
+  const [values, setValues] = useState<string>("");
 
   const { data: todos } = useQuery({
     queryKey: ["todos"],
@@ -25,12 +20,8 @@ function App() {
     todoContext.setTodo(todos);
   }, [todos]);
 
-  const doneTodo = (id: number) => {
-    console.log(id);
-  };
-
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setValues({ ...values, text: event.target.value });
+    setValues(event.target.value);
   };
 
   const onSubmit = () => {
@@ -45,13 +36,13 @@ function App() {
       <div>
         <div>
           <Textbox
-            values={values.text}
+            values={values}
             handleChange={handleChange}
             handleSubmit={onSubmit}
           />
         </div>
         <div className="flex justify-center">
-          <TodoList items={todoContext?.todo} onChecked={doneTodo} />
+          <TodoList items={todoContext?.todo} />
         </div>
       </div>
     </div>

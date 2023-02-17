@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { TodoContext } from "./../../context/TodoProvider";
 
 type DeleteButtonProps = {
-  id: number;
+  id: number | null;
 };
 
 function DeleteButton({ id }: DeleteButtonProps) {

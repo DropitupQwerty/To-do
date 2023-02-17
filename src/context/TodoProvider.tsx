@@ -13,30 +13,22 @@ type TodoContextProviderType = {
   deleteTodo: (id: number) => void;
 };
 
-const initialValues = [
-  {
-    id: 0,
-    text: "",
-    done: false,
-  },
-];
-
 export const TodoContext = createContext<TodoContextProviderType | any>("");
 
 export const TodoProvider = ({ children }: TodoProviderProps) => {
-  const [todo, setTodo] = useState<Todo[]>(initialValues);
+  const [todo, setTodo] = useState<Todo[]>([]);
 
-  const addTodo = (todos: Todo) => {
-    const todoCopy = [...todo, todos];
-
-    setTodo(todoCopy);
-    // addTodoCall(todos);
+  const addTodo = async (todos: string) => {
+    await addTodoCall(todos)
+      .then((res) => {
+        setTodo([...todo, res]);
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteTodo = (id: number) => {
     const deleteById = todo.filter((t) => t.id != id);
     setTodo(deleteById);
-
     // deleteTodoCall(id);
   };
 
@@ -47,6 +39,10 @@ export const TodoProvider = ({ children }: TodoProviderProps) => {
     todoCopy[index].done = !todoCopy[index].done;
     setTodo(todoCopy);
     console.log(todo);
+  };
+
+  const updateTodo = (todos: Todo) => {
+    console.log(todos);
   };
 
   return (

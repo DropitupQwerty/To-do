@@ -18,7 +18,7 @@ const Textbox = ({ values, handleChange, handleSubmit }: TextboxProps) => {
       />
       <div className="flex justify-end">
         <button
-          className="p-2 transition rounded-md bg-green-400 hover:bg-green-500 flex items-center text-base "
+          className="p-2 transition rounded-md bg-blue-300 hover:bg-blue-400 flex items-center text-base "
           onClick={handleSubmit}
         >
           Add new task

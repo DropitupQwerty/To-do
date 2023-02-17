@@ -5,10 +5,9 @@ import { Heading } from "./common/Heading";
 
 interface TodoListProps {
   items: Todo[];
-  onChecked: (id: number) => void;
 }
 
-function TodoList({ items, onChecked }: TodoListProps) {
+function TodoList({ items }: TodoListProps) {
   return (
     <div className="w-9/12 flex justify-evenly max-sm:flex-col">
       <div className="w-full">

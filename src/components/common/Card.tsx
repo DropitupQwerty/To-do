@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteButton from "./DeleteButton";
 import Todo from "./../../models/Todo";
 
@@ -9,18 +9,36 @@ type CardProps = {
 };
 
 function Card({ children, item, style }: CardProps) {
-  const cardStyle =
-    "m-1 max-w-lg shadow bg-yellow-200 rounded-md p-3 flex justify-between " +
-    style;
+  const [valueUpdate, setValueUpdate] = useState<string>(item.text);
+
+  const handleBlur = () => {
+    if (valueUpdate === item.text) {
+      console.log("same value");
+      return;
+    }
+    console.log("Not the same");
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValueUpdate(event.target.value);
+  };
+
+  const lineThrough = () => {
+    if (item.done) return "line-through";
+  };
   return (
-    <div>
-      <div className={cardStyle}>
-        {item.done ? (
-          <div className="line-through text-base">{item.text}</div>
-        ) : (
-          <div className="text-base">{item.text}</div>
-        )}
-        <div className="flex">
+    <div className="cursor-text">
+      <div
+        className={`m-1 max-w-lg shadow bg-yellow-200 rounded-md p-3 flex justify-between ${style}`}
+      >
+        <input
+          onBlur={handleBlur}
+          className={` outline-none bg-transparent w-full text-sm ${lineThrough()} `}
+          onChange={handleChange}
+          value={valueUpdate}
+        />
+
+        <div className="flex mx-4">
           {children}
           <DeleteButton id={item.id} />
         </div>
