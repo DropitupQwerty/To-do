@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import DeleteButton from "./DeleteButton";
 import Todo from "./../../models/Todo";
 import { BiPencil } from "react-icons/bi";
-import { useAtom, useSetAtom, useAtomValue } from "jotai";
 
 type CardProps = {
   item: Todo;
@@ -19,9 +18,7 @@ function Card({ children, item, style }: CardProps) {
     <div
       className={`m-1 max-w-lg shadow bg-yellow-200 rounded-md p-3 flex justify-between ${style} relative items-center `}
     >
-      <div
-        className={`outline-none bg-transparent w-full text-sm ${lineThrough()} `}
-      >
+      <div className={`outline-none bg-transparent text-sm ${lineThrough()} `}>
         {item.text}
       </div>
       <div className="absolute right-0 rounded-md select-none w-full h-full bg-white cursor-pointer opacity-0 hover:opacity-40 text-sm flex justify-center items-center">

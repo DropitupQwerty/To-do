@@ -15,10 +15,10 @@ const CompletedTask = ({ items }: CompletedTaskProps) => {
     <div>
       {items?.map((item, index) => (
         <div key={index}>
-          {item.done && (
+          {item?.done && (
             <Card item={item} style=" bg-yellow-200">
               <button onClick={() => todoContext?.doneTodo(item)}>
-                <ImRadioChecked2 className=" text-white" />
+                <ImRadioChecked2 className="text-white" />
               </button>
             </Card>
           )}

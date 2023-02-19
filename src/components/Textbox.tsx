@@ -8,10 +8,10 @@ type TextboxProps = {
 
 const Textbox = ({ values, handleChange, handleSubmit }: TextboxProps) => {
   return (
-    <div className="mx-5  mt-4 relative">
+    <div className="mx-5 mt-4 relative">
       <form onSubmit={handleSubmit}>
         <input
-          maxLength={40}
+          maxLength={50}
           className="w-full outline-none p-3 resize-none rounded-md my-4"
           onChange={handleChange}
           value={values}
@@ -19,7 +19,6 @@ const Textbox = ({ values, handleChange, handleSubmit }: TextboxProps) => {
         />
         <div className="flex justify-end">
           <input
-            // onClick={handleSubmit}
             className="p-2 transition rounded-md bg-blue-300 hover:bg-blue-400 flex items-center text-base "
             type="submit"
             value={"Add new task"}
