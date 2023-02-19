@@ -17,7 +17,16 @@ export const addTodoCall = async (todo: string) => {
   return response.data;
 };
 
-export const deleteTodoCall = async (id: number) => {
-  console.log("deletetodocall" + `${apiEndPoint}/${id}`);
-  await axios.delete(apiEndPoint + `/${id}`);
+export const deleteTodoCall = async (id: number | null) => {
+  await axios
+    .delete(apiEndPoint + `/deleteTodo/${id}`)
+    .catch((err) => console.log(err));
+};
+
+export const updateTodoCall = async (todo: Todo) => {
+  await axios.put(apiEndPoint + `/updateTodo`, {
+    id: todo.id,
+    text: todo.text,
+    done: todo.done,
+  });
 };

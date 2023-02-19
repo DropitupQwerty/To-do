@@ -1,9 +1,8 @@
 import { useState, useContext, useEffect } from "react";
-import Todo from "./models/Todo";
 import TodoList from "./components/Todolist";
 import Navbar from "./components/Navbar";
 import Textbox from "./components/Textbox";
-import { isError, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { fetchTodos } from "./services/todoService";
 import { TodoContext } from "./context/TodoProvider";
 
@@ -11,20 +10,24 @@ function App() {
   const todoContext = useContext(TodoContext);
   const [values, setValues] = useState<string>("");
 
-  const { data: todos } = useQuery({
+  const { data: todos, isSuccess } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchTodos,
   });
 
   useEffect(() => {
-    todoContext.setTodo(todos);
-  }, [todos]);
+    todoContext?.setTodo(todos);
+    console.log(todos);
+  }, [isSuccess]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     setValues(event.target.value);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    setValues("");
+    event.preventDefault();
     todoContext?.addTodo(values);
   };
 

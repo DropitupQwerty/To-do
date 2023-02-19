@@ -5,7 +5,7 @@ import { TodoContext } from "./../context/TodoProvider";
 import { useContext } from "react";
 
 type CompletedTaskProps = {
-  items: Todo[];
+  items: Todo[] | undefined;
 };
 
 const CompletedTask = ({ items }: CompletedTaskProps) => {
@@ -16,8 +16,8 @@ const CompletedTask = ({ items }: CompletedTaskProps) => {
       {items?.map((item, index) => (
         <div key={index}>
           {item.done && (
-            <Card item={item} style="hover:bg-yellow-100 bg-yellow-200">
-              <button onClick={() => todoContext.doneTodo(item)}>
+            <Card item={item} style=" bg-yellow-200">
+              <button onClick={() => todoContext?.doneTodo(item)}>
                 <ImRadioChecked2 className=" text-white" />
               </button>
             </Card>

@@ -16,8 +16,8 @@ const Ongoing = ({ items }: OngoingProps) => {
       {items?.map((item, index) => (
         <div key={index}>
           {!item?.done && (
-            <Card item={item} style="hover:bg-red-100 bg-red-200">
-              <button onClick={() => todoContext.doneTodo(item)}>
+            <Card item={item} style=" bg-red-200">
+              <button onClick={() => todoContext?.doneTodo(item)}>
                 <ImRadioUnchecked className="text-white" />
               </button>
             </Card>

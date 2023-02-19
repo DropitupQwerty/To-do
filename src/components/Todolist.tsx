@@ -4,7 +4,7 @@ import Ongoing from "./Ongoing";
 import { Heading } from "./common/Heading";
 
 interface TodoListProps {
-  items: Todo[];
+  items: Todo[] | any;
 }
 
 function TodoList({ items }: TodoListProps) {

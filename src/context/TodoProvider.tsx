@@ -1,6 +1,10 @@
 import { createContext, useState } from "react";
 import Todo from "./../models/Todo";
-import { addTodoCall, deleteTodoCall } from "./../services/todoService";
+import {
+  addTodoCall,
+  updateTodoCall,
+  deleteTodoCall,
+} from "./../services/todoService";
 
 type TodoProviderProps = {
   children: React.ReactNode;
@@ -9,45 +13,48 @@ type TodoProviderProps = {
 type TodoContextProviderType = {
   todo: Todo[];
   setTodo: React.Dispatch<React.SetStateAction<Todo[]>>;
-  addTodo: (todo: Todo) => void;
+  addTodo: (text: string) => void;
   deleteTodo: (id: number) => void;
+  doneTodo: (todo: Todo) => void;
+  updateTodo: (todo: Todo) => void;
 };
 
-export const TodoContext = createContext<TodoContextProviderType | any>("");
+export const TodoContext = createContext<TodoContextProviderType | null>(null);
 
 export const TodoProvider = ({ children }: TodoProviderProps) => {
   const [todo, setTodo] = useState<Todo[]>([]);
 
-  const addTodo = async (todos: string) => {
-    await addTodoCall(todos)
-      .then((res) => {
-        setTodo([...todo, res]);
-      })
-      .catch((err) => console.log(err));
+  const addTodo = async (text: string) => {
+    return await addTodoCall(text).then((res) => {
+      setTodo([...todo, res]);
+    });
   };
 
   const deleteTodo = (id: number) => {
     const deleteById = todo.filter((t) => t.id != id);
     setTodo(deleteById);
-    // deleteTodoCall(id);
+    deleteTodoCall(id);
   };
 
-  const doneTodo = (todos: Todo) => {
+  //Updating todos
+  const doneTodo = (checkTodo: Todo) => {
     const todoCopy = [...todo];
-    const index = todo.indexOf(todos);
+    const index = todo.indexOf(checkTodo);
     todoCopy[index] = { ...todoCopy[index] };
     todoCopy[index].done = !todoCopy[index].done;
+
+    console.log(todoCopy[index]);
+    updateTodoCall(todoCopy[index]);
     setTodo(todoCopy);
-    console.log(todo);
   };
 
   const updateTodo = (todos: Todo) => {
-    console.log(todos);
+    updateTodoCall(todos);
   };
 
   return (
     <TodoContext.Provider
-      value={{ todo, setTodo, addTodo, deleteTodo, doneTodo }}
+      value={{ todo, setTodo, addTodo, deleteTodo, doneTodo, updateTodo }}
     >
       {children}
     </TodoContext.Provider>
