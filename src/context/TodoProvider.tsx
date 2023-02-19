@@ -36,7 +36,6 @@ export const TodoProvider = ({ children }: TodoProviderProps) => {
     deleteTodoCall(id);
   };
 
-  //Updating todos
   const doneTodo = (checkTodo: Todo) => {
     const todoCopy = [...todo];
     const index = todo.indexOf(checkTodo);
